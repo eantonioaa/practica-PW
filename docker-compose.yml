@@ -1,0 +1,39 @@
+services:
+  web:
+    build: .  # Esto le dice que use el Dockerfile de esta carpeta
+    container_name: apache_php
+    ports:
+      - "8082:80"
+    volumes:
+      - ./www:/var/www/html
+    networks:
+      - lamp-network
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_db
+    platform: linux/amd64 # Forzar compatibilidad si usas procesador ARM/M-series (opcional)
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mi_base_de_datos
+    ports:
+      - "3306:3306" # Por si quieres entrar desde fuera con MySQL Workbench o DBeaver
+    networks:
+      - lamp-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: pma_docker
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+    networks:
+      - lamp-network
+
+networks:
+  lamp-network:
+    driver: bridge
