@@ -134,14 +134,13 @@ $provincias = mysqli_fetch_all(mysqli_query($conexion, "SELECT * FROM PROVINCIAS
                 <div class="user-dropdown">
                     <button class="user-avatar-btn">
                         <?php if (!empty($url_foto)): ?>
-                            <img src="<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+                            <img src="../<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
                         <?php else: ?>
                             <?php echo $inicial; ?>
                         <?php endif; ?>
                     </button>
                     <div class="dropdown-content">
                         <a href="../perfil.php">👤 Mi Perfil</a>
-                        <a href="index.php">⚙️ Panel Admin</a>
                         <hr>
                         <a href="../logout.php">🚪 Cerrar Sesión</a>
                     </div>

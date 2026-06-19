@@ -21,4 +21,16 @@ if ($datos_rol['id_rol'] != 1) {
 $nombre = $_SESSION['usuario_nombre'];
 $inicial = strtoupper(substr($nombre, 0, 1));
 $url_foto = $_SESSION['usuario_foto'] ?? null;
+
+if (empty($url_foto)) {
+    $id = $_SESSION['usuario_id'];
+    $res = mysqli_query($conexion, "SELECT i.ruta FROM usuarios u 
+                                    JOIN imagenes i ON u.id_imagen_perfil = i.id 
+                                    WHERE u.id = $id");
+    if ($res && mysqli_num_rows($res) > 0) {
+        $foto = mysqli_fetch_assoc($res);
+        $_SESSION['usuario_foto'] = $foto['ruta'];
+        $url_foto = $foto['ruta'];
+    }
+}
 ?>

@@ -101,7 +101,7 @@ $municipios = mysqli_query($conexion, "SELECT * FROM MUNICIPIOS WHERE idProvinci
                 <div class="user-dropdown">
                     <button class="user-avatar-btn">
                         <?php if (!empty($url_foto)): ?>
-                            <img src="<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+                            <img src="../<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
                         <?php else: ?>
                             <?php echo $inicial; ?>
                         <?php endif; ?>
@@ -136,8 +136,8 @@ $municipios = mysqli_query($conexion, "SELECT * FROM MUNICIPIOS WHERE idProvinci
                     <label class="card-perfil-label">Rol</label>
                     <select name="id_rol" class="card-perfil-input">
                         <?php while($rol = mysqli_fetch_assoc($roles)): ?>
-                            <option value="<?php echo $rol['id']; ?>"
-                                <?php if($rol['id'] == $u['id_rol']) echo 'selected'; ?>>
+                            <option value="<?php echo $rol['codigo']; ?>"
+                                <?php if($rol['codigo'] == $u['id_rol']) echo 'selected'; ?>>
                                 <?php echo htmlspecialchars($rol['nombre']); ?>
                             </option>
                         <?php endwhile; ?>

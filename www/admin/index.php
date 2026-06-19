@@ -23,7 +23,7 @@ include('../admin/control.php');
                 <div class="user-dropdown">
                     <button class="user-avatar-btn">
                         <?php if (!empty($url_foto)): ?>
-                            <img src="<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+                            <img src="../<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
                         <?php else: ?>
                             <?php echo $inicial; ?>
                         <?php endif; ?>

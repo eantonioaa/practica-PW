@@ -55,14 +55,13 @@ $actividades = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                 <div class="user-dropdown">
                     <button class="user-avatar-btn">
                         <?php if (!empty($url_foto)): ?>
-                            <img src="<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
+                            <img src="../<?php echo $url_foto; ?>" style="width:35px;height:35px;border-radius:50%;object-fit:cover;">
                         <?php else: ?>
                             <?php echo $inicial; ?>
                         <?php endif; ?>
                     </button>
                     <div class="dropdown-content">
                         <a href="../perfil.php">👤 Mi Perfil</a>
-                        <a href="index.php">⚙️ Panel Admin</a>
                         <hr>
                         <a href="../logout.php">🚪 Cerrar Sesión</a>
                     </div>
@@ -88,6 +87,7 @@ $actividades = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                     <th>Tipo</th>
                     <th>Fecha</th>
                     <th>Imágenes</th>
+                    <th>Actividades</th>
                 </tr>
             </thead>
             <tbody>
@@ -121,6 +121,11 @@ $actividades = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
                             <?php else: ?>
                                 <span style="color:var(--texto-gris); font-size:0.85rem;">Sin imágenes</span>
                             <?php endif; ?>
+                        </td>
+                        <td>
+                            <div>
+                                <a href="../detalle_actividad.php?id=<?php echo $act['id']; ?>" class="btn-perfil" target="_blank">Ver</a>
+                            </div>
                         </td>
                     </tr>
                 <?php endforeach; ?>
